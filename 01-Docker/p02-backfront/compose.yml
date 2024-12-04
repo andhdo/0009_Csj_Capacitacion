@@ -1,0 +1,18 @@
+services:
+  back:
+    # image: andhdo/p02-back:latest
+    name: p02-back-1
+    build: 
+      context: ./p02-back
+      dockerfile: Dockerfile
+    ports:
+      - 8092:80
+  front:
+    name: p02-front-1
+    build:
+      context: ./p02-front
+      dockerfile: Dockerfile
+    ports:
+      - 8094:5174
+    depends_on:
+      - back
